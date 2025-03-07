@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<projetTicket.Models.Ticket>
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Index";
@@ -7,7 +9,10 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    @if (@HttpContextAccessor?.HttpContext?.Session.GetString("SessionRole") == "Admin")
+    {
+        <a asp-action="Create">Create New</a>
+    }
 </p>
 <table class="table">
     <thead>
@@ -61,10 +66,24 @@
                 @Html.DisplayFor(modelItem => item.ResolutionDate)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
-                <a asp-action="Resolved" asp-route-id="@item.Id">Resolved</a>
+                    @if (@HttpContextAccessor?.HttpContext?.Session.GetString("SessionRole") == "Admin")
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <span> | </span>
+                    }
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+
+                    @if (@HttpContextAccessor?.HttpContext?.Session.GetString("SessionRole") == "Admin")
+                    {
+                        <span> | </span> 
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
+                    }
+
+                    @if (!item.IsResolved)
+                    {
+                        <span> | </span>
+                        <a asp-action="Resolved" asp-route-id="@item.Id">Resolved</a>
+                    }
+                
             </td>
         </tr>
 }

@@ -262,3 +262,4 @@ C:\Users\trist\Desktop\csharp\ticket\projetTicket\projetTicket\bin\Debug\net8.0\
 C:\Users\trist\Desktop\csharp\ticket\projetTicket\projetTicket\obj\Debug\net8.0\projetTicket.csproj.AssemblyReference.cache
 C:\Users\trist\Desktop\csharp\ticket\projetTicket\projetTicket\obj\Debug\net8.0\projetTi.D6A384B5.Up2Date
 C:\Users\trist\Desktop\csharp\ticket\projetTicket\projetTicket\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\trist\Desktop\csharp\ticket\projetTicket\projetTicket\obj\Debug\net8.0\projetTicket.sourcelink.json

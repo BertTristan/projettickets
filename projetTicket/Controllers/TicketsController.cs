@@ -34,6 +34,23 @@ namespace projetTicket.Controllers
             return View(tickets);
         }
 
+        public async Task<IActionResult> Resolved(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var ticket = await _context.Ticket.FindAsync(id);
+
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+            ticket.IsResolved = true;
+
+            return RedirectToAction(nameof(Index));
+        }
+
         // GET: Tickets/Details/5
         public async Task<IActionResult> Details(int? id)
         {
